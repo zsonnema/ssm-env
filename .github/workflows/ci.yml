@@ -1,0 +1,55 @@
+name: Build and Test
+
+# This workflow triggers on a push or pull request to the master branch
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Check out the repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Go 1.23.2
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.23.2
+
+    # Cache Go modules to speed up builds
+    - name: Cache Go modules
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    # Install dependencies
+    - name: Install dependencies
+      run: go mod download
+
+    # Run tests
+    - name: Run tests
+      run: go test ./...
+
+    # Build the Go binary
+    - name: Build binary
+      run: go build -o bin/ssm-env
+
+    # Upload the build artifacts
+    - name: Upload binary as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ssm-env
+        path: bin/ssm-env

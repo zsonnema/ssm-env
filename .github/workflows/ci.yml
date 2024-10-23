@@ -16,17 +16,17 @@ jobs:
     steps:
     # Check out the repository code
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Set up Go 1.23.2
     - name: Set up Go 1.x
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version: 1.23.2
 
     # Cache Go modules to speed up builds
     - name: Cache Go modules
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.cache/go-build
@@ -49,7 +49,7 @@ jobs:
 
     # Upload the build artifacts
     - name: Upload binary as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ssm-env
         path: bin/ssm-env

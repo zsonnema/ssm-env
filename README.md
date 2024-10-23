@@ -5,7 +5,7 @@
 ## Installation
 
 ```console
-$ go get -u github.com/remind101/ssm-env
+$ go get -u github.com/zsonnema/ssm-env
 ```
 
 You can most likely find the downloaded binary in `~/go/bin/ssm-env`
@@ -58,7 +58,7 @@ NEW_SECRET=super_secret_v2
 A common use case is to use `ssm-env` as a Docker ENTRYPOINT. You can copy and paste the following into the top of a Dockerfile:
 
 ```dockerfile
-RUN curl -sSfL -o /usr/local/bin/ssm-env https://github.com/remind101/ssm-env/releases/download/v0.0.5/ssm-env \
+RUN curl -sSfL -o /usr/local/bin/ssm-env https://github.com/zsonnema/ssm-env/releases/download/v0.0.5/ssm-env \
     && cd /usr/local/bin \
     && echo "babf40382bcd260f0d8d4575a32d5ec33fb08fefd29f12ffd800fbe738c41021  ssm-env" | sha256sum -c \
     && chmod +x ssm-env
@@ -76,9 +76,9 @@ FROM alpine:latest
 
 # ...copy code
 
-# ssm-env: See https://github.com/remind101/ssm-env
+# ssm-env: See https://github.com/zsonnema/ssm-env
 RUN apk add curl
-RUN curl -sSfL -o /usr/local/bin/ssm-env https://github.com/remind101/ssm-env/releases/download/v0.0.5/ssm-env \
+RUN curl -sSfL -o /usr/local/bin/ssm-env https://github.com/zsonnema/ssm-env/releases/download/v0.0.5/ssm-env \
     && cd /usr/local/bin \
     && echo "babf40382bcd260f0d8d4575a32d5ec33fb08fefd29f12ffd800fbe738c41021  ssm-env" | sha256sum -c \
     && chmod +x ssm-env

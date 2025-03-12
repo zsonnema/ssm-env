@@ -1,9 +1,9 @@
 module github.com/zsonnema/ssm-env
 
-go 1.23.1
+go 1.23.6
 
 require (
-	github.com/aws/aws-sdk-go v1.55.5
+	github.com/aws/aws-sdk-go v1.55.6
 	github.com/stretchr/testify v1.9.0
 )
 

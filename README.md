@@ -124,3 +124,13 @@ all other environment variables, including those retrieved from SSM):
             - name: SSM_EXAMPLE
               value: ssm:///foo/bar
 ```
+## update ssm-env
+
+- update local go version
+and run following commands:
+- go mod edit -go 1.23.6 <use the version you updated to>
+- go mod tidy
+- go get -u ./...
+- go test ./...
+
+And then commit to branch.
